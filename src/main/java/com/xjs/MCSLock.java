@@ -1,9 +1,11 @@
 package com.xjs;
 
-import java.util.Calendar;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+
+import sun.misc.Unsafe;
 
 public class MCSLock {
 
@@ -50,21 +52,24 @@ public class MCSLock {
 		currentThread.next = null; //for GC
 	}
 	
-	public static void main(String[] args) {
-		final MCSLock mcsLock = new MCSLock();
-		ExecutorService es = Executors.newFixedThreadPool(10);
-		for (int i = 0; i < 10; i++) {
-			final int index = i;
-			es.submit(new Runnable() {
-				
-				public void run() {
-					MCSNode node = new MCSNode();
-					mcsLock.lock(node);
-					System.out.println("dead lock" + index);
-					mcsLock.unlock(node);
-				}
-			});
-		}
-		es.shutdown();
+	public static void main(String[] args) throws NoSuchFieldException, SecurityException {
+		final Unsafe unsafe = Unsafe.getUnsafe();
+		System.out.println(unsafe.objectFieldOffset
+                (AbstractQueuedSynchronizer.class.getDeclaredField("state")));
+//		final MCSLock mcsLock = new MCSLock();
+//		ExecutorService es = Executors.newFixedThreadPool(10);
+//		for (int i = 0; i < 10; i++) {
+//			final int index = i;
+//			es.submit(new Runnable() {
+//				
+//				public void run() {
+//					MCSNode node = new MCSNode();
+//					mcsLock.lock(node);
+//					System.out.println("dead lock" + index);
+//					mcsLock.unlock(node);
+//				}
+//			});
+//		}
+//		es.shutdown();
 	}
 }
