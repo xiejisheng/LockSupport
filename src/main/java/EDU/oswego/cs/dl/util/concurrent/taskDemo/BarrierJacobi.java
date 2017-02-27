@@ -1,3 +1,5 @@
+package EDU.oswego.cs.dl.util.concurrent.taskDemo;
+
 // Barrier version of Jacobi iteration
 
 import EDU.oswego.cs.dl.util.concurrent.*;
