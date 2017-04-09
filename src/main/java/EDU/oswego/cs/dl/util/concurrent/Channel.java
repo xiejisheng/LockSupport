@@ -15,7 +15,7 @@
 package EDU.oswego.cs.dl.util.concurrent;
 
 /** 
- * Main interface for buffers, queues, pipes, conduits, etc.
+ * Main interface for buffers, queues, pipes, conduits【'kɒndjʊɪt; 'kɒndɪt 导管、沟渠、水管】, etc.
  * <p>
  * A Channel represents anything that you can put items
  * into and take them out of. As with the Sync 
@@ -23,7 +23,7 @@ package EDU.oswego.cs.dl.util.concurrent;
  * blocking (put(x), take),
  * and timeouts (offer(x, msecs), poll(msecs)) policies
  * are provided. Using a
- * zero timeout for offer and poll results in a pure balking policy.
+ * zero timeout for offer and poll results in a pure balking【阻塞、障碍】 policy.
  * <p>
  * To aid in efforts to use Channels in a more typesafe manner,
  * this interface extends Puttable and Takable. You can restrict
@@ -68,7 +68,7 @@ package EDU.oswego.cs.dl.util.concurrent;
  * </pre>
  * <p>
  * A given channel implementation might or might not have bounded
- * capacity or other insertion constraints, so in general, you cannot tell if
+ * capacity or other insertion constraints【kən'streint 约束、限制、约束条件】, so in general, you cannot tell if
  * a given put will block. However,
  * Channels that are designed to 
  * have an element capacity (and so always block when full)

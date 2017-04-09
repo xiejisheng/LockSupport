@@ -32,7 +32,7 @@ public class LinkedQueue implements Channel {
 
 
   /** 
-   * Dummy header node of list. The first actual node, if it exists, is always 
+   * Dummy【'dʌmɪ 虚拟的、假的】 header node of list. The first actual node, if it exists, is always 
    * at head_.next. After each take, the old first node becomes the head.
    **/
   protected LinkedNode head_;         
