@@ -54,6 +54,7 @@ public class ParticleApplet extends Applet {
 		if (threads != null) {
 			for (Thread thread : threads) {
 				thread.interrupt();
+				thread.interrupted();
 				System.out.println(thread.isInterrupted());
 			}
 			threads = null;
